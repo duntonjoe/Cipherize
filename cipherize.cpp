@@ -30,7 +30,6 @@ int main (int argc, char *argv[]) {
 	printTitle();
 	printMenu();
 	system ("tput sgr0 && tput civis");
-
 	cin >> select;
 	cout << select;
 } 
