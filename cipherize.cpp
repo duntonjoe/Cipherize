@@ -18,10 +18,12 @@ using std::cout;
 using std::ifstream;
 using std::endl;
 using std::flush;
+using std::string;
 
 //func protos
 void printTitle();
 void printMenu();
+void polybius();
 
 
 int main (int argc, char *argv[]) {
@@ -31,7 +33,20 @@ int main (int argc, char *argv[]) {
 	printMenu();
 	system ("tput sgr0 && tput civis");
 	cin >> select;
-	cout << select;
+	switch (select){
+		case 1: 
+			polybius();
+			break;
+		case 2:
+			cout << "case 2" << endl;
+			break;
+		case 3:
+			cout << "case 3" << endl;
+			break;
+		case 4:
+			cout << "\n\nGoodbye!" << endl;
+			exit(0);
+	}
 } 
 
 
@@ -59,6 +74,6 @@ void printMenu(){
 	cout << "3) Rot13" << endl;
 	system ("tput setaf 4");
 	cout << "4) exit" << endl;
-	system ("tput sgr0 && tput blink");
-	cout << "\n\n>>" << flush;
+	system ("tput sgr0");
+	cout << "\n\n>> " << flush;
 }
