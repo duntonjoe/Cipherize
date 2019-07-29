@@ -12,6 +12,9 @@
 #include <cmath>
 #include <boost/algorithm/string.hpp>
 #include <ctype.h>
+#include <bits/stdc++.h>
+#include <vector>
+
 //using decs
 using std::cin;
 using std::cout;
@@ -20,11 +23,17 @@ using std::flush;
 using std::string;
 using std::abs;
 using std::to_string;
+using std::istringstream;
+using std::stoi;
+using std::istream_iterator;
+using std::vector;
+using std::ifstream;
 
 //func protos
 string polybiusEncode(string plaintext);
 string polybiusDecode(string ciphertext);
 void polybiusAgain();
+void polybiusHelp();
 
 void polybius(){
 	int select;
@@ -32,24 +41,33 @@ void polybius(){
 	system ("clear && tput setaf 5");
 	cout << "\n\nSelect option and press enter: " << endl;
 	system ("tput setaf 1");
-	cout << "1) Encode" << endl;
+	cout << "1) Decode" << endl;
 	system ("tput setaf 2");
-	cout << "2) Decode" << endl;
+	cout << "2) Encode" << endl;
+	system ("tput setaf 3");
+	cout << "3) Help" << endl;
 	system ("tput sgr0 && tput civis");
 	cout << "\n\n>> " << flush;
 	cin >> select;
-	if(select-1){
-		cout << "Enter ciphertext to decode: " << flush;
-		cin >> input;
-		cout << "\nDecoded ciphertext is: " << polybiusDecode(input) << endl;
-	}
-	else{
-		cout << "Enter plaintext to encode: " << flush;
-		cin >> input;
-		cout << "\nEncoded plaintext is: " << flush;
-		system ("tput setaf 2");
-		cout << polybiusEncode(input) << endl;
-		system ("tput sgr0 && tput civis");
+	switch (select){
+		case 1: 
+			cout << "Enter ciphertext to decode: " << flush;
+			getchar();
+			getline(cin, input);
+			cout << "\nDecoded ciphertext is: " << polybiusDecode(input) << endl;
+			system ("tput sgr0 && tput civis");
+			break;
+		case 2:
+			cout << "Enter plaintext to encode: " << flush;
+			cin >> input;
+			cout << "\nEncoded plaintext is: " << flush;
+			system ("tput setaf 2");
+			cout << polybiusEncode(input) << endl;
+			system ("tput sgr0 && tput civis");
+			break;
+		case 3:
+			polybiusHelp();
+			break;
 	}
 	polybiusAgain();
 
@@ -91,14 +109,64 @@ string polybiusEncode(string plaintext){
 }
 
 string polybiusDecode(string ciphertext){
-	
+	string square[6][6] = {
+		{"a", "b", "c", "d", "e", "f"},
+		{"g", "h", "i", "j", "k", "l"},
+		{"m", "n", "o", "p", "q", "r"},
+		{"s", "t", "u", "v", "w", "x"},
+		{"y", "z", "0", "1", "2", "3"},
+		{"4", "5", "6", "7", "8", "9"}
+	};
+	string cipherLetter = "";
+	string plaintext = "";
+	string row;
+	string col;
 
-	return (ciphertext + " (DECODED)");
+    vector<string> cipherLetters;
+    istringstream iss(ciphertext);
+    for(string s; iss >> s; )
+        cipherLetters.push_back(s);
+
+	for(int i=0; i < cipherLetters.size(); i++)
+	{
+		cipherLetter = cipherLetters[i];
+		if(isdigit(cipherLetter[0])){
+			col = cipherLetter[0];
+			row = cipherLetter[1];
+			plaintext+=square[stoi(col) - 1][stoi(row) - 1];
+		}
+		else{
+			plaintext+=cipherLetter;
+		}
+	}
+	return (plaintext);
+}
+
+void polybiusHelp(){
+	ifstream polybiusHelpFile;
+	polybiusHelpFile.open("polybiusHelp.txt");
+	if(polybiusHelpFile.fail())
+	{
+		exit(1);
+	}
+	system ("tput setaf 3 && tput bold");
+	cout << polybiusHelpFile.rdbuf();
+	polybiusHelpFile.close();
+	system ("tput sgr0");
 }
 
 void polybiusAgain(){
 	char choice;
-	cout << "\nUse polybius again? [y/n]: " << flush;
+	cout << "\nUse polybius again? [" << flush;
+	system ("tput setaf 2");
+	cout << "y" << flush;
+	system ("tput sgr0");
+	cout << "/" << flush;
+	system ("tput setaf 1");
+	cout << "n" << flush;
+	system ("tput sgr0");
+	cout << "]: " << flush;
+
 	cin >> choice;
 	if(choice == 'y'){
 		polybius();
