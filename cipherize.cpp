@@ -25,6 +25,8 @@ void cipherize();
 void printTitle();
 void printMenu();
 void polybius();
+void caesar();
+void rot13();
 
 
 int main (int argc, char *argv[]) {
@@ -43,10 +45,10 @@ void cipherize(){
 			polybius();
 			break;
 		case 2:
-			cout << "case 2" << endl;
+			caesar();
 			break;
 		case 3:
-			cout << "case 3" << endl;
+			rot13();
 			break;
 		case 4:
 			cout << "\nGoodbye!" << endl;
