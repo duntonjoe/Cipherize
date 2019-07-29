@@ -9,4 +9,4 @@ polybius.o:
 	g++ -c polybius.cpp
 
 clean:
-	rm *.o cipherize
+	rm *.o *.gch cipherize
