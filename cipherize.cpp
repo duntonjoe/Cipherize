@@ -21,12 +21,17 @@ using std::flush;
 using std::string;
 
 //func protos
+void cipherize();
 void printTitle();
 void printMenu();
 void polybius();
 
 
 int main (int argc, char *argv[]) {
+	cipherize(); 
+} 
+
+void cipherize(){
 	system ("clear && tput civis"); 
 	int select;
 	printTitle();
@@ -44,11 +49,10 @@ int main (int argc, char *argv[]) {
 			cout << "case 3" << endl;
 			break;
 		case 4:
-			cout << "\n\nGoodbye!" << endl;
+			cout << "\nGoodbye!" << endl;
 			exit(0);
 	}
-} 
-
+}
 
 void printTitle(){
 	ifstream titleFile;

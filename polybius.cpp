@@ -15,6 +15,9 @@
 #include <bits/stdc++.h>
 #include <vector>
 
+//local includes
+#include "cipherize.h"
+
 //using decs
 using std::cin;
 using std::cout;
@@ -172,8 +175,7 @@ void polybiusAgain(){
 		polybius();
 	}
 	else if (choice == 'n'){
-		//return to main menu
-		exit(0);
+		cipherize();
 	}
 	else{
 		cout << "Please enter y or n." << flush;
