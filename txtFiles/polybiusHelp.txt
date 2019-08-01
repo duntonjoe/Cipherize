@@ -1,0 +1,26 @@
+ | 1 | 2 | 3 | 4 | 5 | 6 |
+-+---+-------------------+
+1| a | b | c | d | e | f |
+-------------------------+
+2| g | h | i | j | k | l |
+-------------------------+
+3| m | n | o | p | q | r |
+-------------------------+
+4| s | t | u | v | w | x |
+-------------------------+
+5| y | z | 0 | 1 | 2 | 3 |
+-------------------------+
+6| 4 | 5 | 6 | 7 | 8 | 9 |
+-------------------------+
+
+The polybius square "encodes" letters by mapping them to grid coordinates. 
+This implementation uses the 6x6 alphanumeric square (above), as opposed 
+to a traditional 5x5 square of only letters.
+
+Example: encode the word "stallman"
+-----------------------------------
+1) Find the which row contains S. 		(row 	 4)
+2) Find which column of that row S resides at. 	(column	 1)
+3) Combine the pair of values (row, column)	(41)
+4) The value 14 is your "encoded" string for S.
+5) Do this for the rest of the letters.		(41 42 11 26 26 31 11 32)

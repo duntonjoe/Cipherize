@@ -59,7 +59,7 @@ void cipherize(){
 
 void printTitle(){
 	ifstream titleFile;
-	titleFile.open("title.txt");
+	titleFile.open("txtFiles/title.txt");
 	if(titleFile.fail())
 	{
 		exit(1);
@@ -87,7 +87,7 @@ void printMenu(){
 
 void cipherHelp(string cipher){
 	ifstream helpFile;
-	string filename = (cipher + "Help.txt");
+	string filename = ("txtFiles/" + cipher + "Help.txt");
 	helpFile.open(filename);
 	if(helpFile.fail())
 	{
