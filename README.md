@@ -1,3 +1,2 @@
 # Cipherize
-This tool allows you to convert plain text to several simple ciphers, and cipher text back to plain text.
-This has to be run in the presence of BASH.
+This tool allows you to put plain text through a few simple ciphers. This has to be run in the presence of BASH.
