@@ -69,7 +69,7 @@ void polybius(){
 			system ("tput sgr0 && tput civis");
 			break;
 		case 3:
-			polybiusHelp();
+			cipherHelp("polybius");
 			break;
 	}
 	polybiusAgain();
@@ -143,19 +143,6 @@ string polybiusDecode(string ciphertext){
 		}
 	}
 	return (plaintext);
-}
-
-void polybiusHelp(){
-	ifstream polybiusHelpFile;
-	polybiusHelpFile.open("polybiusHelp.txt");
-	if(polybiusHelpFile.fail())
-	{
-		exit(1);
-	}
-	system ("tput setaf 3 && tput bold");
-	cout << polybiusHelpFile.rdbuf();
-	polybiusHelpFile.close();
-	system ("tput sgr0");
 }
 
 void polybiusAgain(){

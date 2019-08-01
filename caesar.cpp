@@ -62,7 +62,7 @@ void caesar(){
                         system ("tput sgr0 && tput civis");
                         break;
                 case 3:
-                        caesarHelp();
+                        cipherHelp("caesar");
                         break;
         }
         caesarAgain();

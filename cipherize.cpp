@@ -27,6 +27,7 @@ void printMenu();
 void polybius();
 void caesar();
 void rot13();
+void cipherHelp(string cipher);
 
 
 int main (int argc, char *argv[]) {
@@ -82,4 +83,18 @@ void printMenu(){
 	cout << "4) exit" << endl;
 	system ("tput sgr0");
 	cout << "\n\n>> " << flush;
+}
+
+void cipherHelp(string cipher){
+	ifstream helpFile;
+	string filename = (cipher + "Help.txt");
+	helpFile.open(filename);
+	if(helpFile.fail())
+	{
+		exit(1);
+	}
+	system ("tput setaf 3 && tput bold");
+	cout << helpFile.rdbuf();
+	helpFile.close();
+	system ("tput sgr0");
 }

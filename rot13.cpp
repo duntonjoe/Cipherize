@@ -56,7 +56,7 @@ void rot13(){
                         system ("tput sgr0 && tput civis");
                         break;
                 case 3:
-                        rot13Help();
+                        cipherHelp("rot13");
                         break;
         }
         rot13Again();
