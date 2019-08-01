@@ -1,5 +1,0 @@
-The rot13 cipher is simply a special case of the Caesar cipher.
-This just always encodes using a shift of 13. The obvious down
-side to this is that any rot13 ciphertext can be decoded by simply
-shifting it by 13 again. It's a highly unimpressive system, but
-can be a valuable tool for teaching beginners about shift ciphers.
