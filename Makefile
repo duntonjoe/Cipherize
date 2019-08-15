@@ -1,18 +1,15 @@
+.PHONY: clean
 
-cipherize: cipherize.o polybius.o caesar.o rot13.o
-	g++ cipherize.o polybius.o caesar.o rot13.o -o cipherize
+SRC := $(wildcard *.cpp)
+OBJ := $(SRC:.cpp=.o)
+DEP := $(SRC:.cpp=.d)
 
-cipherize.o: cipherize.cpp
-	g++ -c cipherize.cpp cipherize.h
+CPPFLAGS := -MMD
 
-polybius.o: polybius.cpp
-	g++ -c polybius.cpp
+cipherize: $(OBJ)
+	$(LINK.cpp) $^ -o $@
 
-caesar.o: caesar.cpp
-	g++ -c caesar.cpp caesar.h
-
-rot13.o: rot13.cpp
-	g++ -c rot13.cpp
-
-clean:
+clean:	
 	rm *.o *.gch cipherize
+
+-include $(DEP)
