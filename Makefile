@@ -10,6 +10,6 @@ cipherize: $(OBJ)
 	$(LINK.cpp) $^ -o $@
 
 clean:	
-	rm *.o *.gch cipherize
+	rm *.o cipherize
 
 -include $(DEP)

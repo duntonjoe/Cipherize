@@ -10,7 +10,6 @@
 #include <ostream>
 #include <cstdlib>
 #include <cmath>
-#include <boost/algorithm/string.hpp>
 #include <ctype.h>
 #include <bits/stdc++.h>
 #include <vector>
@@ -77,7 +76,8 @@ void polybius(){
 }
 
 string polybiusEncode(string plaintext){
-	string lowPlain = boost::algorithm::to_lower_copy(plaintext);
+	string lowPlain = "";
+	transform(plaintext.begin(), plaintext.end(), lowPlain.begin(), ::tolower);
 	string ciphertext = "";
 	string unsupported = "";
 	int row;
